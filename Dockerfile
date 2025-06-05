@@ -19,10 +19,10 @@ RUN npm install -g http-server@14
 
 # copy ONLY the static bundle so /srv/public/index.html exists
 COPY --from=builder /app/dist/hope/browser ./public
-RUN test -f public/index.html   # fails build if copy path is wrong
+RUN test -f public/browser/index.html   # fails build if copy path is wrong
 
 ENV PORT=8080
 EXPOSE 8080
 
 # **Shell form** so $PORT is expanded, bind to all interfaces, SPA mode
-CMD sh -c "http-server public -a 0.0.0.0 -p ${PORT} -s"
+CMD sh -c "http-server public/browser -a 0.0.0.0 -p ${PORT} -s"
