@@ -5,11 +5,11 @@ steps:
       - -f
       - Dockerfile # <— path from repo root to the file
       - -t
-      - gcr.io/$PROJECT_ID/hope
+      - gcr.io/$PROJECT_ID/hope-web-demo
       - . # build context = repo root
 
 images:
-  - gcr.io/$PROJECT_ID/hope
+  - gcr.io/$PROJECT_ID/hope-web-demo
 
 options:
   logging: CLOUD_LOGGING_ONLY
