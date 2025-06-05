@@ -1,27 +1,12 @@
 steps:
-  # Build & push the image
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/hope", "."]
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/hope"]
-
-  # Deploy to Cloud Run (replace REGION as needed)
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: gcloud
+  - name: gcr.io/cloud-builders/docker
     args:
-      [
-        "run",
-        "deploy",
-        "hope",
-        "--image",
-        "gcr.io/$PROJECT_ID/hope",
-        "--platform",
-        "managed",
-        "--allow-unauthenticated",
-      ]
+      - build
+      - -f
+      - deploy/Dockerfile # <— path from repo root to the file
+      - -t
+      - gcr.io/$PROJECT_ID/hope
+      - . # build context = repo root
 
 images:
-  - "gcr.io/$PROJECT_ID/hope"
-
-options:
-  logging: CLOUD_LOGGING_ONLY
+  - gcr.io/$PROJECT_ID/hope
