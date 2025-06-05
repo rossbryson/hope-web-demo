@@ -19,7 +19,7 @@ RUN npm install -g http-server@14
 
 # copy ONLY the static bundle so /srv/public/index.html exists
 COPY --from=builder /app/dist/hope/browser ./public
-RUN test -f public/browser/index.html   # fails build if copy path is wrong
+RUN test -f public/index.html   # fails build if copy path is wrong
 
 ENV PORT=8080
 EXPOSE 8080
