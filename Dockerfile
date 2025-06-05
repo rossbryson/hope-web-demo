@@ -13,19 +13,17 @@ RUN npm ci
 COPY . .
 RUN npx ng build --configuration production --output-path=dist/hope/browser
 
-##### Stage 2 – runtime  #############################################
+##### Stage 2 – runtime ##############################################
 FROM node:20.11-alpine AS runner
 WORKDIR /srv
 
-# tiny static server
 RUN npm install -g http-server@14
 
-# ⬇️  copy only the browser bundle so index.html is at /srv/public
+# Copy just the browser bundle so /srv/public/index.html exists
 COPY --from=builder /app/dist/hope/browser ./public
 
 ENV PORT=8080
 EXPOSE 8080
 
-# -s => SPA fallback to /index.html
-CMD ["http-server", "public", "-p", "${PORT:-8080}", "-s"]
-
+# Use the shell form so $PORT is expanded, bind to 0.0.0.0, enable SPA mode
+CMD ["sh", "-c", "http-server public -a 0.0.0.0 -p ${PORT:-8080} -s"]
