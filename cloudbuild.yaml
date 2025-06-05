@@ -3,7 +3,7 @@ steps:
     args:
       - build
       - -f
-      - deploy/Dockerfile # <— path from repo root to the file
+      - Dockerfile # <— path from repo root to the file
       - -t
       - gcr.io/$PROJECT_ID/hope
       - . # build context = repo root
