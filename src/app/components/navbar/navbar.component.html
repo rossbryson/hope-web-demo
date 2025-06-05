@@ -1,0 +1,64 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
+>
+  <div class="container-fluid">
+    <a
+      class="navbar-brand d-flex align-items-center"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="isNavbarCollapsed = true"
+    >
+      <img
+        src="/assets/favicon/icon-white.png"
+        width="50"
+        height="50"
+        alt="HOPE Logo"
+        class="me-3"
+      />
+      <div class="d-flex flex-column">
+        <span class="mb-0">{{ appName }}</span>
+        <small class="lh-1 opacity-75">{{ appSubtitle }}</small>
+      </div>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      [attr.aria-expanded]="!isNavbarCollapsed"
+      aria-controls="navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      [class.show]="!isNavbarCollapsed"
+    >
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/scope-of-work"
+            routerLinkActive="active"
+            (click)="isNavbarCollapsed = true"
+          >
+            <i class="fas fa-file-alt me-2"></i>Scope of Work
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/cost-benefit"
+            routerLinkActive="active"
+            (click)="isNavbarCollapsed = true"
+          >
+            <i class="fas fa-chart-bar me-2"></i>Cost vs Benefit
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

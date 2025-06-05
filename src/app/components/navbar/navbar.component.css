@@ -1,0 +1,30 @@
+/* This applies when the navbar is horizontal (expanded).
+   Adjust the min-width breakpoint (992px) if your navbar uses a different
+   navbar-expand-* class (e.g., navbar-expand-md uses 768px).
+*/
+@media (min-width: 992px) {
+  /* Assuming .navbar-expand-lg */
+  .navbar-nav .nav-item:not(:first-child) {
+    /* Key Fix: Make the <li> a flex container */
+    display: flex;
+    /* Key Fix: Align its children (the ::before pseudo-element and the <a> tag) vertically center */
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item:not(:first-child)::before {
+    content: "|";
+
+    /* Color of the pipe - adjust as needed */
+    color: rgba(255, 255, 255); /* For dark navbars (e.g., .bg-primary) */
+    /* color: rgba(0, 0, 0, 0.4); */ /* For light navbars (e.g., .bg-light) */
+
+    /* Spacing for the pipe:
+       margin-left: Creates space from the end of the *previous* nav-item to the pipe.
+       margin-right: Creates space from the pipe to the beginning of the *current* nav-item's link text.
+                    The <a> tag (nav-link) itself will also have its own left padding.
+       Adjust these margin values to get your desired visual spacing.
+    */
+    margin-left: 1rem; /* Example: Space before the pipe */
+    margin-right: 1rem; /* Example: Space after the pipe (before the link's own padding starts) */
+  }
+}

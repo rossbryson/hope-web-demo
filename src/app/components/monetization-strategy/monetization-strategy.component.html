@@ -1,0 +1,22 @@
+<section id="monetization" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">
+      <i class="fas fa-credit-card me-2"></i>Monetization Strategy
+    </h2>
+    <div class="row g-4">
+      <div *ngFor="let strategy of strategies" class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title">
+              <i
+                class="{{ strategy.faIcon }} me-2 {{ strategy.iconColorClass }}"
+              ></i
+              >{{ strategy.title }}
+            </h4>
+            <p class="card-text">{{ strategy.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

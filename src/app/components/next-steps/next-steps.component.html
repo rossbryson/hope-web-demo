@@ -1,0 +1,34 @@
+<section id="next-steps" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">
+      <i class="far fa-calendar-alt me-2"></i>Next Steps
+    </h2>
+    <div class="accordion" id="nextStepsAccordion">
+      <div *ngFor="let step of steps; let i = index" class="accordion-item">
+        <h3 class="accordion-header" [id]="'heading' + i">
+          <button
+            class="accordion-button {{ i === 0 ? '' : 'collapsed' }}"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapse' + i"
+            [attr.aria-expanded]="i === 0 ? 'true' : 'false'"
+            [attr.aria-controls]="'collapse' + i"
+          >
+            <i class="{{ step.faIcon }} me-2 {{ step.iconColorClass }}"></i
+            ><strong>{{ step.title }}</strong>
+          </button>
+        </h3>
+        <div
+          [id]="'collapse' + i"
+          class="accordion-collapse collapse {{ i === 0 ? 'show' : '' }}"
+          [attr.aria-labelledby]="'heading' + i"
+          data-bs-parent="#nextStepsAccordion"
+        >
+          <div class="accordion-body">
+            {{ step.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

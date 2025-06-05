@@ -1,0 +1,7 @@
+runtime: nodejs20
+handlers:
+  - url: /
+    static_files: dist/hope/index.html
+    upload: dist/hope/index.html
+  - url: /
+    static_dir: dist/hope

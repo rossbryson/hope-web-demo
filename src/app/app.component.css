@@ -1,0 +1,4 @@
+/* This is if you use the d-flex structure above */
+:host {
+  display: block; /* Or ensure app-root behaves like a block */
+}

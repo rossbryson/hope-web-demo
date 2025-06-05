@@ -1,0 +1,44 @@
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.steps-list {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: steps-counter; /* Initialize a counter */
+}
+
+.step-item {
+  position: relative;
+  padding: 15px;
+  padding-left: 50px; /* Space for the counter */
+  margin-bottom: 12px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  font-size: 1em;
+}
+
+.step-item::before {
+  counter-increment: steps-counter; /* Increment the counter */
+  content: counter(steps-counter); /* Display the counter */
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #3498db; /* Primary color for counter */
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.step-item strong {
+  color: #2c3e50;
+}

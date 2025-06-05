@@ -1,0 +1,20 @@
+/* src/app/pages/cost-benefit/cost-benefit.component.css */
+.card-header h4 {
+  font-size: 1.15rem; /* Slightly smaller header for cards */
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.chart {
+  display: block;
+  width: 100% !important; /* Ensure chart canvas takes full width of its container */
+  height: 100% !important; /* Ensure chart canvas takes full height of its container */
+}
+
+/* Add subtle hover effects or other custom styles as desired */
+.card.shadow-sm:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  transition: box-shadow 0.2s ease-in-out;
+}

@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Your existing global styles (if any) can go below */
+body {
+  font-family: Arial, sans-serif; /* Bootstrap will override this with its own font stack, which is fine */
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* A light Bootstrap-like background */
+  color: #212529; /* Bootstrap default text color */
+}
+
+/* You might want to adjust the main container padding if your navbar becomes fixed-top */
+/* main.container {
+  padding-top: 70px; /* Example if navbar height is around 70px */
+/* } */
+
+/* General section styling - Bootstrap cards will handle much of this now */
+/* section {
+  background-color: #fff;
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 0.25rem; /* Bootstrap's default border-radius */
+/* box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); Bootstrap's default shadow for cards */
+/* } */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #343a40; /* Darker heading color */
+}
