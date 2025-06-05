@@ -13,20 +13,19 @@ RUN npm ci
 COPY . .
 RUN npx ng build --configuration production --output-path=dist/hope/browser
 
-# ────────────────────────────────
-# Stage 2 – Slim runtime image
-# ────────────────────────────────
+##### Stage 2 – runtime  #############################################
 FROM node:20.11-alpine AS runner
 WORKDIR /srv
 
-# Fast, <1 MB static HTTP server
+# tiny static server
 RUN npm install -g http-server@14
 
-# Copy compiled assets only
+# ⬇️  copy only the browser bundle so index.html is at /srv/public
 COPY --from=builder /app/dist/hope/browser ./public
 
-# Cloud Run injects $PORT at runtime – listen on it :contentReference[oaicite:1]{index=1}
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["sh", "-c", "http-server public -p ${PORT:-8080} --silent"]
+# -s => SPA fallback to /index.html
+CMD ["http-server", "public", "-p", "${PORT:-8080}", "-s"]
+
