@@ -17,8 +17,6 @@ steps:
         "gcr.io/$PROJECT_ID/hope",
         "--platform",
         "managed",
-        "--region",
-        "$REGION",
         "--allow-unauthenticated",
       ]
 
