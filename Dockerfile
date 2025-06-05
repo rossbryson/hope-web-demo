@@ -11,7 +11,7 @@ RUN npm ci
 
 # Copy source and build for production
 COPY . .
-RUN npx ng build --configuration production --output-path=dist/hope
+RUN npx ng build --configuration production --output-path=dist/hope/browser
 
 # ────────────────────────────────
 # Stage 2 – Slim runtime image
@@ -23,7 +23,7 @@ WORKDIR /srv
 RUN npm install -g http-server@14
 
 # Copy compiled assets only
-COPY --from=builder /app/dist/hope ./public
+COPY --from=builder /app/dist/hope/browser ./public
 
 # Cloud Run injects $PORT at runtime – listen on it :contentReference[oaicite:1]{index=1}
 ENV PORT=8080
