@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">My History</h5>
+  </div>
+  <div class="list-group list-group-flush">
+    <div *ngFor="let event of myHistory" class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">
+          <i [class]="getIconClass(event.type)" class="fa-fw me-2"></i>
+          <span [ngSwitch]="event.type">
+            <span *ngSwitchCase="'Attendance'">Attendance Recorded</span>
+            <span *ngSwitchCase="'Ticket'">Ticket Submitted</span>
+            <span *ngSwitchCase="'SafetyReport'">Safety Report Submitted</span>
+            <span *ngSwitchCase="'ProctoredExam'">Exam Completed</span>
+          </span>
+        </h6>
+        <small>{{ event.timestamp }}</small>
+      </div>
+
+      <div class="ps-4" [ngSwitch]="event.type">
+        <div *ngSwitchCase="'Attendance'">
+          <span
+            class="badge rounded-pill bg-success-subtle text-success-emphasis"
+          >
+            {{ event.details.attendancePercentage }}% Overall Attendance
+          </span>
+        </div>
+        <div *ngSwitchCase="'Ticket'">
+          <p class="mb-1 small text-muted">{{ event.details.issue }}</p>
+          Status:
+          <span [class]="getStatusClass(event.details.status)">{{
+            event.details.status
+          }}</span>
+        </div>
+        <div *ngSwitchCase="'SafetyReport'">
+          <p class="mb-1 small text-muted">
+            Thank you for your submission. This report is anonymous.
+          </p>
+          Status:
+          <span [class]="getStatusClass(event.details.status)">{{
+            event.details.status
+          }}</span>
+        </div>
+        <div *ngSwitchCase="'ProctoredExam'">
+          <p class="mb-1 small text-muted">{{ event.details.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-center">
+    <a href="#" class="text-decoration-none">View all history</a>
+  </div>
+</div>

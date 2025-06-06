@@ -1,68 +1,11 @@
 <div class="container-fluid">
   <h4 class="mb-4">Welcome, {{ studentName }}!</h4>
-
   <div class="row">
     <div class="col-lg-7">
-      <div class="card mb-4">
-        <div
-          class="card-header d-flex justify-content-between align-items-center"
-        >
-          <h5 class="mb-0">My Assigned Device</h5>
-          <span class="fw-bold fs-5" [class]="getDeviceStatusClass()">
-            <i class="fas fa-shield-alt me-2"></i>{{ deviceInfo.status }}
-          </span>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <strong>Device Tag:</strong> {{ deviceInfo.tag }} <br />
-            <strong>Model:</strong> {{ deviceInfo.model }}
-          </p>
-
-          <h6 class="mt-4">Included Items:</h6>
-          <ul class="list-unstyled">
-            <li *ngFor="let accessory of deviceInfo.accessories">
-              <i class="fas fa-check-circle text-success me-2"></i
-              >{{ accessory }}
-            </li>
-          </ul>
-          <hr />
-
-          <p>Having an issue? Let us know so we can help.</p>
-          <a href="#" class="btn btn-primary w-100">
-            <i class="fas fa-plus-circle me-2"></i>Open a New Repair Ticket
-          </a>
-        </div>
-      </div>
+      <app-assigned-device></app-assigned-device>
     </div>
-
     <div class="col-lg-5">
-      <h5 class="mb-3">My Ticket History</h5>
-      <div class="list-group">
-        <div
-          *ngFor="let ticket of myTickets"
-          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-        >
-          <div>
-            <div class="d-flex w-100 justify-content-between">
-              <h6 class="mb-1">Ticket #{{ ticket.id }}</h6>
-              <small>{{ ticket.submittedDate }}</small>
-            </div>
-            <p class="mb-1">{{ ticket.issue }}</p>
-            <span [class]="getTicketStatusClass(ticket.status)">{{
-              ticket.status
-            }}</span>
-          </div>
-          <button
-            class="btn btn-sm btn-outline-secondary ms-3"
-            title="View Details & Chat"
-          >
-            <i class="fas fa-comment-dots"></i>
-          </button>
-        </div>
-        <div *ngIf="myTickets.length === 0" class="list-group-item">
-          You have no open tickets.
-        </div>
-      </div>
+      <app-my-history></app-my-history>
     </div>
   </div>
 </div>
