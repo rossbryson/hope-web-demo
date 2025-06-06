@@ -163,7 +163,7 @@ export class CostBenefitComponent implements OnInit, OnDestroy {
         [Validators.required, Validators.min(0), Validators.max(1)],
       ],
       initialDevices: [1600000, [Validators.required, Validators.min(0)]],
-      devicesPerYear: [50000, [Validators.required, Validators.min(0)]],
+      devicesPerYear: [600000, [Validators.required, Validators.min(0)]],
       costPerLicense: [1.25, [Validators.required, Validators.min(0)]],
       initialDevelopmentCost: [75000, [Validators.required, Validators.min(0)]],
       annualMaintenanceCost: [10000, [Validators.required, Validators.min(0)]],

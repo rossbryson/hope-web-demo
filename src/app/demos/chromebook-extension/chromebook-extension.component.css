@@ -57,3 +57,16 @@
   flex-direction: column;
   justify-content: center;
 }
+
+/* src/app/demos/chromebook-extension/chromebook-extension.component.css */
+
+/* ... all your existing styles for .extension-frame, etc. ... */
+
+.extension-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  background-color: #f1f1f1;
+  /* This ensures the footer doesn't shrink */
+  flex-shrink: 0;
+}

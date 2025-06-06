@@ -8,8 +8,8 @@
       <a
         class="nav-link"
         [class.active]="activeTab === 'admin'"
-        (click)="setActiveTab('admin')"
-        href="javascript:void(0)"
+        [routerLink]="['/demo']"
+        [fragment]="'admin'"
       >
         <i class="fas fa-user-shield me-1"></i> Administration Portal
       </a>
@@ -18,8 +18,8 @@
       <a
         class="nav-link"
         [class.active]="activeTab === 'client'"
-        (click)="setActiveTab('client')"
-        href="javascript:void(0)"
+        [routerLink]="['/demo']"
+        [fragment]="'client'"
       >
         <i class="fas fa-user-graduate me-1"></i> Client Portal
       </a>
@@ -27,9 +27,9 @@
     <li class="nav-item">
       <a
         class="nav-link"
+        [routerLink]="['/demo']"
+        [fragment]="'extension'"
         [class.active]="activeTab === 'extension'"
-        (click)="setActiveTab('extension')"
-        href="javascript:void(0)"
       >
         <i class="fab fa-chrome me-1"></i> Chromebook Extension
       </a>
