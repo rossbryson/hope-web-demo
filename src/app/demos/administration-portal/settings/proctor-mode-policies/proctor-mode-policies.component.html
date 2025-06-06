@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <i class="fas fa-chalkboard-teacher fa-fw me-2"></i>Proctor Mode Policies
+    </h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">
+      Set default behaviors, permissions, and data retention for proctored
+      testing sessions.
+    </p>
+
+    <h6>Default Session Settings</h6>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="defaultUrlFiltering"
+        checked
+      />
+      <label class="form-check-label" for="defaultUrlFiltering">
+        Enforce URL filtering by default
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="defaultScreenRecording"
+        checked
+      />
+      <label class="form-check-label" for="defaultScreenRecording">
+        Enable screen recording for audit trails by default
+      </label>
+    </div>
+    <div class="form-check mb-3">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="defaultNetworkLock"
+      />
+      <label class="form-check-label" for="defaultNetworkLock">
+        Enable network lock by default
+      </label>
+    </div>
+
+    <hr class="my-4" />
+
+    <h6>Data & Privacy</h6>
+    <div class="mb-3">
+      <label for="retention-policy" class="form-label"
+        >Screen recording retention period</label
+      >
+      <select class="form-select" id="retention-policy">
+        <option>30 days</option>
+        <option selected>90 days</option>
+        <option>1 Year</option>
+        <option>Indefinitely</option>
+      </select>
+    </div>
+    <div>
+      <label for="student-message" class="form-label"
+        >Pre-session notification message</label
+      >
+      <textarea class="form-control" id="student-message" rows="3">
+Your device is entering a proctored session for an assessment. Your screen activity may be recorded and your Browse will be limited to approved sites only.</textarea
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <i class="fas fa-user-shield fa-fw me-2"></i>Safety Reports Policies
+    </h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">
+      Configure report routing and keywords to ensure concerns are handled by
+      the correct personnel.
+    </p>
+
+    <h6>Submission Policy</h6>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="anonymity"
+        id="anon-required"
+        checked
+      />
+      <label class="form-check-label" for="anon-required">
+        Require all reports to be anonymous
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="anonymity"
+        id="anon-optional"
+      />
+      <label class="form-check-label" for="anon-optional">
+        Allow students to choose to include their name
+      </label>
+    </div>
+
+    <hr class="my-4" />
+
+    <h6>Routing & Escalation by Category</h6>
+    <p>
+      Enter email addresses or user groups to notify for each report category.
+    </p>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width: 150px">Bullying</span>
+      <input
+        type="text"
+        class="form-control"
+        value="counselors@myschool.org, dean.of.students@myschool.org"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width: 150px"
+        >Self-Harm Concern</span
+      >
+      <input
+        type="text"
+        class="form-control"
+        value="safety.officers@myschool.org, district.psych@myschool.org"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width: 150px">Abuse</span>
+      <input
+        type="text"
+        class="form-control"
+        value="district.safety@myschool.org, principal.jones@myschool.org"
+      />
+    </div>
+    <div class="input-group">
+      <span class="input-group-text" style="width: 150px">General Concern</span>
+      <input
+        type="text"
+        class="form-control"
+        value="student.services@myschool.org"
+      />
+    </div>
+  </div>
+</div>

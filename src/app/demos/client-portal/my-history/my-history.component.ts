@@ -1,6 +1,7 @@
 // src/app/demos/client-portal/my-history/my-history.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router'; // <-- IMPORT
 
 export interface HistoryEvent {
   type: 'Attendance' | 'Ticket' | 'SafetyReport' | 'ProctoredExam';
@@ -11,7 +12,7 @@ export interface HistoryEvent {
 @Component({
   selector: 'app-my-history',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './my-history.component.html',
   styleUrls: ['./my-history.component.css'],
 })

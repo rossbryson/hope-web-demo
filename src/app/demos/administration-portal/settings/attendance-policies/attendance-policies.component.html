@@ -1,0 +1,114 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <i class="fas fa-user-check fa-fw me-2"></i>Attendance Policies
+    </h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">
+      Define rules for automated check-ins and attendance notifications.
+    </p>
+
+    <h6 class="mt-4">Check-in Method</h6>
+    <div class="btn-group w-100" role="group" aria-label="Check-in Method">
+      <input
+        type="radio"
+        class="btn-check"
+        name="checkin-method"
+        id="method-auto"
+        autocomplete="off"
+        checked
+      />
+      <label class="btn btn-outline-primary" for="method-auto">Automatic</label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        name="checkin-method"
+        id="method-manual"
+        autocomplete="off"
+      />
+      <label class="btn btn-outline-primary" for="method-manual"
+        >Manual Prompt</label
+      >
+
+      <input
+        type="radio"
+        class="btn-check"
+        name="checkin-method"
+        id="method-hybrid"
+        autocomplete="off"
+      />
+      <label class="btn btn-outline-primary" for="method-hybrid">Hybrid</label>
+    </div>
+
+    <hr class="my-4" />
+
+    <h6>Scheduled Prompts</h6>
+    <div class="form-check form-switch mb-3">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="enableScheduledPrompts"
+        checked
+      />
+      <label class="form-check-label" for="enableScheduledPrompts"
+        >Enable scheduled daily check-in prompts</label
+      >
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="checkin-start" class="form-label"
+          >Check-in Window Start</label
+        >
+        <input
+          type="time"
+          id="checkin-start"
+          class="form-control"
+          value="08:00"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="checkin-end" class="form-label">Check-in Window End</label>
+        <input
+          type="time"
+          id="checkin-end"
+          class="form-control"
+          value="08:30"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="grace-period" class="form-label">Grace Period</label>
+        <div class="input-group">
+          <input
+            type="number"
+            id="grace-period"
+            class="form-control"
+            value="5"
+          />
+          <span class="input-group-text">minutes</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <h6>Off-Campus Policy</h6>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="allowOffCampus"
+      />
+      <label class="form-check-label" for="allowOffCampus"
+        >Allow check-in from off-campus locations</label
+      >
+    </div>
+    <div class="form-text ms-4">
+      Required for field trips, hybrid learning, and work-study programs.
+    </div>
+  </div>
+</div>

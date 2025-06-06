@@ -1,0 +1,35 @@
+<div class="container-fluid p-4 p-md-5">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <a
+      [routerLink]="['/demo']"
+      fragment="admin"
+      class="btn btn-outline-secondary me-3"
+    >
+      <i class="fas fa-arrow-left me-2"></i>Back
+    </a>
+    <h1 class="mb-0">Settings</h1>
+    <button class="btn btn-primary">
+      <i class="fas fa-save me-2"></i>Save
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <app-tracking-policies></app-tracking-policies>
+  </div>
+
+  <div class="mb-4">
+    <app-attendance-policies></app-attendance-policies>
+  </div>
+
+  <div class="mb-4">
+    <app-safety-reports-policies></app-safety-reports-policies>
+  </div>
+
+  <div class="mb-4">
+    <app-notification-policies></app-notification-policies>
+  </div>
+
+  <div class="mb-4">
+    <app-proctor-mode-policies></app-proctor-mode-policies>
+  </div>
+</div>

@@ -21,9 +21,84 @@
     <div>
       <hr />
       <p>Having an issue? Let us know so we can help.</p>
-      <a href="#" class="btn btn-primary w-100">
+      <a
+        href="#"
+        class="btn btn-primary w-100"
+        data-bs-toggle="modal"
+        data-bs-target="#newStudentTicketModal"
+      >
         <i class="fas fa-plus-circle me-2"></i>Open a New Repair Ticket
       </a>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="newStudentTicketModal"
+  tabindex="-1"
+  aria-labelledby="newStudentTicketModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newStudentTicketModalLabel">
+          <i class="fas fa-wrench me-2"></i>Report an Issue with Your Device
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="text-muted">
+          You are submitting a ticket for the device listed below. Please
+          describe the issue you are experiencing.
+        </p>
+        <dl class="row bg-light rounded p-2 mb-3">
+          <dt class="col-sm-4">Student:</dt>
+          <dd class="col-sm-8">Alex Doe</dd>
+          <dt class="col-sm-4">Device Tag:</dt>
+          <dd class="col-sm-8">{{ deviceInfo.tag }}</dd>
+        </dl>
+
+        <div class="mb-3">
+          <label for="studentTicketCategory" class="form-label"
+            >Issue Category</label
+          >
+          <select id="studentTicketCategory" class="form-select">
+            <option selected>Choose the best description...</option>
+            <option>Cracked Screen / Physical Damage</option>
+            <option>Won't Turn On / Charge</option>
+            <option>Keyboard or Trackpad Issue</option>
+            <option>Can't Connect to Wi-Fi</option>
+            <option>Software is Slow or Frozen</option>
+            <option>Other Issue</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="studentTicketDescription" class="form-label"
+            >Please describe the issue in detail:</label
+          >
+          <textarea
+            class="form-control"
+            id="studentTicketDescription"
+            rows="4"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary">Submit Ticket</button>
+      </div>
     </div>
   </div>
 </div>
