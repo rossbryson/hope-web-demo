@@ -1,0 +1,76 @@
+<div class="container-fluid p-4 p-md-5">
+  <div class="d-flex align-items-center mb-4">
+    <a
+      [routerLink]="['/demo']"
+      fragment="admin"
+      class="btn btn-outline-secondary me-3"
+    >
+      <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+    </a>
+    <h1 class="mb-0">System-Wide Activity Log</h1>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover mb-0 align-middle">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="width: 3%"></th>
+            <th scope="col">Event Type</th>
+            <th scope="col">Timestamp</th>
+            <th scope="col">Details</th>
+            <th scope="col">User / Target</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of fullHistory">
+            <td class="text-center">
+              <i
+                [class]="getIconClass(activity.type)"
+                title="{{ activity.type }}"
+              ></i>
+            </td>
+            <td>{{ activity.type }}</td>
+            <td>{{ activity.timestamp }}</td>
+            <td>
+              <span [ngSwitch]="activity.type">
+                <span *ngSwitchCase="'Ticket'">{{
+                  activity.details.issue
+                }}</span>
+                <span *ngSwitchCase="'Proctoring'"
+                  >{{ activity.details.deviceCount }} devices in OU:
+                  {{ activity.details.ou }}</span
+                >
+                <span *ngSwitchCase="'Poll'"
+                  >{{ activity.details.deviceCount }} devices in OU:
+                  {{ activity.details.ou }}</span
+                >
+                <span *ngSwitchCase="'Notification'"
+                  >{{ activity.details.event }} to
+                  {{ activity.details.ou }}</span
+                >
+                <span *ngSwitchCase="'Attendance'"
+                  >{{ activity.details.checkedIn }} /
+                  {{ activity.details.total }} checked in ({{
+                    activity.details.percentage
+                  }}%)</span
+                >
+                <span *ngSwitchDefault>Report #{{ activity.details.id }}</span>
+              </span>
+            </td>
+            <td>{{ activity.user }}</td>
+            <td>
+              <span
+                *ngIf="activity.details.status"
+                [class]="getStatusClass(activity.details.status)"
+              >
+                {{ activity.details.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

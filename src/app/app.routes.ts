@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdministrationPortalComponent } from './demos/administration-portal/administration-portal.component';
+import { HistoryComponent as AdminHistoryComponent } from './demos/administration-portal/history/history.component';
 import { SettingsComponent } from './demos/administration-portal/settings/settings.component';
 import { ClientPortalComponent } from './demos/client-portal/client-portal.component';
 import { HistoryComponent } from './demos/client-portal/history/history.component';
@@ -37,6 +38,11 @@ export const routes: Routes = [
     path: 'demo/administration-portal/settings',
     component: SettingsComponent,
     title: 'HOPE | Admin Settings',
+  },
+  {
+    path: 'demo/administration-portal/history',
+    component: AdminHistoryComponent,
+    title: 'HOPE | Admin History',
   },
   {
     path: 'demo/client-portal',

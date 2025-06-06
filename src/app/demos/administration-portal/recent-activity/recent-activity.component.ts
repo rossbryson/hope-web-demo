@@ -1,6 +1,7 @@
 // src/app/demos/administration-portal/recent-activity/recent-activity.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router'; // <-- IMPORT
 
 // A more flexible interface for different activity types
 export interface Activity {
@@ -12,7 +13,7 @@ export interface Activity {
 @Component({
   selector: 'app-recent-activity',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './recent-activity.component.html',
   styleUrls: ['./recent-activity.component.css'],
 })
