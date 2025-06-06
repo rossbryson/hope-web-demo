@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-lg-4">
+    <h4>Extension Simulation</h4>
+    <p>
+      This is a visual mockup of the HOPE browser extension. Use the buttons
+      below to simulate different states and features.
+    </p>
+    <div class="list-group">
+      <button
+        class="list-group-item list-group-item-action"
+        (click)="setState('idle')"
+        [class.active]="extensionState === 'idle'"
+      >
+        <i class="fas fa-power-off me-2"></i>Default Idle State
+      </button>
+      <button
+        class="list-group-item list-group-item-action"
+        (click)="setState('proctoring')"
+        [class.active]="extensionState === 'proctoring'"
+      >
+        <i class="fas fa-lock me-2"></i>Simulate Proctor Mode
+      </button>
+      <button
+        class="list-group-item list-group-item-action"
+        (click)="setState('alert')"
+        [class.active]="extensionState === 'alert'"
+      >
+        <i class="fas fa-triangle-exclamation me-2"></i>Simulate Emergency Alert
+      </button>
+    </div>
+  </div>
+
+  <div class="col-lg-8 d-flex justify-content-center align-items-center">
+    <div class="extension-frame">
+      <div class="extension-header">
+        <img
+          src="https://i.imgur.com/S5d266E.png"
+          alt="HOPE Logo"
+          class="logo"
+        />
+        <span>HOPE Extension</span>
+      </div>
+
+      <div class="extension-body" [ngSwitch]="extensionState">
+        <div *ngSwitchCase="'idle'" class="p-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Status</h5>
+            <span class="badge bg-success"
+              ><i class="fas fa-check-circle me-1"></i>Connected</span
+            >
+          </div>
+          <p class="text-muted small">
+            Your device is connected and protected by the HOPE safety service.
+          </p>
+          <hr />
+
+          <button class="btn btn-primary w-100 mb-2">
+            <i class="fas fa-wrench me-2"></i>Report Device Issue
+          </button>
+          <button class="btn btn-outline-danger w-100 mb-3">
+            <i class="fas fa-user-secret me-2"></i>Anonymous Safety Report
+          </button>
+
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">Daily Check-in</h6>
+                <small>Pending</small>
+              </div>
+              <p class="mb-1 small">
+                Please complete your attendance check-in.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'proctoring'" class="p-3 proctor-view">
+          <div class="text-center mb-3">
+            <i class="fas fa-user-graduate fa-2x text-primary"></i>
+            <h5 class="mb-0 mt-2">Proctor Mode Active</h5>
+          </div>
+          <div class="proctor-details">
+            <strong>Test:</strong> {{ proctoringDetails.testName }}<br />
+            <strong>Time Remaining:</strong>
+            {{ proctoringDetails.timeRemaining }}
+          </div>
+          <hr />
+          <ul class="list-unstyled">
+            <li>
+              <i class="fas fa-check-circle text-success me-2"></i
+              ><strong>URL Filtering:</strong> Active
+            </li>
+            <ul class="allowed-sites">
+              <li *ngFor="let site of proctoringDetails.allowedSites">
+                {{ site }}
+              </li>
+            </ul>
+            <li>
+              <i class="fas fa-check-circle text-success me-2"></i
+              ><strong>Screen Recording:</strong> Active
+            </li>
+            <li>
+              <i class="fas fa-check-circle text-success me-2"></i
+              ><strong>Network Lock:</strong> Active
+            </li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'alert'" class="p-3 alert-view">
+          <div class="text-center">
+            <i class="fas fa-triangle-exclamation fa-3x text-danger mb-3"></i>
+            <h5 class="mb-2">{{ alertDetails.title }}</h5>
+            <p class="mb-4">{{ alertDetails.message }}</p>
+            <button class="btn btn-danger w-100" (click)="setState('idle')">
+              Acknowledge
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

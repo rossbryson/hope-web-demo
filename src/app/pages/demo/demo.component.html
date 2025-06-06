@@ -1,1 +1,52 @@
-<p>demo works!</p>
+<div class="container-fluid p-4">
+  <h2 class="mb-4">
+    <i class="fas fa-desktop me-2"></i>HOPE Application Demos
+  </h2>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'admin'"
+        (click)="setActiveTab('admin')"
+        href="javascript:void(0)"
+      >
+        <i class="fas fa-user-shield me-1"></i> Administration Portal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'client'"
+        (click)="setActiveTab('client')"
+        href="javascript:void(0)"
+      >
+        <i class="fas fa-user-graduate me-1"></i> Client Portal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="activeTab === 'extension'"
+        (click)="setActiveTab('extension')"
+        href="javascript:void(0)"
+      >
+        <i class="fab fa-chrome me-1"></i> Chromebook Extension
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content border border-top-0 p-4 bg-light">
+    <div *ngIf="activeTab === 'admin'">
+      <app-administration-portal></app-administration-portal>
+    </div>
+
+    <div *ngIf="activeTab === 'client'">
+      <app-client-portal></app-client-portal>
+    </div>
+
+    <div *ngIf="activeTab === 'extension'">
+      <app-chromebook-extension></app-chromebook-extension>
+    </div>
+  </div>
+</div>
