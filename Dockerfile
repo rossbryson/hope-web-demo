@@ -25,4 +25,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # **Shell form** so $PORT is expanded, bind to all interfaces, SPA mode
-CMD sh -c "http-server public/browser -a 0.0.0.0 -p ${PORT} -s"
+CMD sh -c "http-server public -a 0.0.0.0 -p ${PORT} -s"
