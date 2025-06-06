@@ -31,7 +31,7 @@
   </div>
 
   <div class="col-lg-8 d-flex justify-content-center align-items-center">
-    <div class="extension-frame">
+    <div class="extension-frame h-100">
       <div class="extension-header">
         <img src="assets/favicon/favicon.svg" alt="HOPE Logo" class="logo" />
         <span>HOPE Extension</span>
@@ -41,22 +41,23 @@
         <div *ngSwitchCase="'idle'" class="p-3">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h5 class="mb-0">Status</h5>
-            <span class="badge bg-success"
-              ><i class="fas fa-check-circle me-1"></i>Connected</span
-            >
+            <span class="badge bg-success">
+              <i class="fas fa-check-circle me-1"></i>Connected
+            </span>
           </div>
           <p class="text-muted small">
             Your device is connected and protected by the HOPE safety service.
           </p>
           <hr />
-
-          <button class="btn btn-primary w-100 mb-2">
+          <button class="btn btn-primary w-100 mb-2" (click)="startNewTicket()">
             <i class="fas fa-wrench me-2"></i>Report Device Issue
           </button>
-          <button class="btn btn-outline-danger w-100 mb-3">
+          <button
+            class="btn btn-outline-danger w-100 mb-3"
+            (click)="startSafetyReport()"
+          >
             <i class="fas fa-user-secret me-2"></i>Anonymous Safety Report
           </button>
-
           <div class="list-group">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
@@ -102,7 +103,10 @@
           </ul>
         </div>
 
-        <div *ngSwitchCase="'alert'" class="p-3 alert-view">
+        <div
+          *ngSwitchCase="'alert'"
+          class="p-3 alert-view d-flex flex-column justify-content-center"
+        >
           <div class="text-center">
             <i class="fas fa-triangle-exclamation fa-3x text-danger mb-3"></i>
             <h5 class="mb-2">{{ alertDetails.title }}</h5>
@@ -112,9 +116,132 @@
             </button>
           </div>
         </div>
+
+        <div *ngSwitchCase="'newTicket'" class="d-flex flex-column h-100">
+          <div
+            class="p-3 border-bottom d-flex align-items-center flex-shrink-0"
+          >
+            <button
+              class="btn btn-sm btn-light me-2"
+              (click)="setState('idle')"
+              title="Back"
+            >
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <h5 class="mb-0">Report an Issue</h5>
+          </div>
+          <div class="p-3 flex-grow-1" style="overflow-y: auto">
+            <div class="mb-3">
+              <label for="studentTicketCategory" class="form-label"
+                >Issue Category</label
+              >
+              <select id="studentTicketCategory" class="form-select">
+                <option selected>Choose the best description...</option>
+                <option>Cracked Screen / Physical Damage</option>
+                <option>Won't Turn On / Charge</option>
+                <option>Keyboard or Trackpad Issue</option>
+                <option>Can't Connect to Wi-Fi</option>
+                <option>Software is Slow or Frozen</option>
+                <option>Other Issue</option>
+              </select>
+            </div>
+            <div>
+              <label for="studentTicketDescription" class="form-label"
+                >Please describe the issue in detail:</label
+              >
+              <textarea
+                class="form-control"
+                id="studentTicketDescription"
+                rows="6"
+              ></textarea>
+            </div>
+          </div>
+          <div
+            class="p-3 border-top d-flex justify-content-end gap-2 flex-shrink-0"
+          >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="setState('idle')"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary">Submit Ticket</button>
+          </div>
+        </div>
+        <div *ngSwitchCase="'newSafetyReport'" class="d-flex flex-column h-100">
+          <div
+            class="p-3 border-bottom d-flex align-items-center flex-shrink-0"
+          >
+            <button
+              class="btn btn-sm btn-light me-2"
+              (click)="setState('idle')"
+              title="Back"
+            >
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <h5 class="mb-0">Anonymous Safety Report</h5>
+          </div>
+
+          <div class="p-3 flex-grow-1 overflow-y-auto">
+            <div class="alert alert-warning d-flex align-items-center small">
+              <i class="fas fa-user-secret fa-2x me-3"></i>
+              <div>
+                Your report is <strong>100% anonymous</strong>. Your name,
+                email, and device information will not be included.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="safetyReportCategory" class="form-label"
+                >Report Category</label
+              >
+              <select id="safetyReportCategory" class="form-select">
+                <option selected>Choose the best description...</option>
+                <option>Bullying or Harassment</option>
+                <option>I'm worried about a friend (Self-Harm)</option>
+                <option>Threats or Violence</option>
+                <option>Unsafe Situation</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="safetyReportDescription" class="form-label"
+                >Please describe what's happening:</label
+              >
+              <textarea
+                class="form-control"
+                id="safetyReportDescription"
+                rows="5"
+                placeholder="Please provide as much detail as possible..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div
+            class="p-3 border-top d-flex justify-content-end gap-2 flex-shrink-0"
+          >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="setState('idle')"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-danger">
+              Submit Anonymous Report
+            </button>
+          </div>
+        </div>
       </div>
+
       <div class="extension-footer">
-        <a href="/demo#client" class="text-muted small text-decoration-none">
+        <a
+          routerLink="/demo"
+          fragment="client"
+          class="text-muted small text-decoration-none"
+        >
           <i class="fas fa-external-link-alt me-1"></i>
           Open Client Portal
         </a>
