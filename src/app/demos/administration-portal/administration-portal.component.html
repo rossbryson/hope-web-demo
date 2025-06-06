@@ -48,39 +48,11 @@
     </div>
   </div>
 
-  <h4 class="mb-3">Recent Activity</h4>
+  <app-recent-activity></app-recent-activity>
+  <h4 class="mt-5 mb-3">Live Device Locations</h4>
   <div class="card">
-    <div class="table-responsive">
-      <table class="table table-hover table-striped mb-0">
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Student</th>
-            <th>Device Tag</th>
-            <th>Issue</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ticket of recentTickets">
-            <td>{{ ticket.id }}</td>
-            <td>{{ ticket.student }}</td>
-            <td>{{ ticket.deviceTag }}</td>
-            <td>{{ ticket.issue }}</td>
-            <td>
-              <span [class]="getStatusClass(ticket.status)">{{
-                ticket.status
-              }}</span>
-            </td>
-            <td>
-              <button class="btn btn-sm btn-outline-secondary">
-                <i class="fas fa-eye me-1"></i> View
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card-body">
+      <app-device-map></app-device-map>
     </div>
   </div>
 </div>

@@ -1,0 +1,112 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Recent Activity</h5>
+  </div>
+  <div class="list-group list-group-flush">
+    <a
+      href="#"
+      *ngFor="let activity of recentActivities"
+      class="list-group-item list-group-item-action"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">
+          <i [class]="getIconClass(activity.type)" class="fa-fw me-2"></i>
+          <span [ngSwitch]="activity.type">
+            <span *ngSwitchCase="'Ticket'"
+              >New Ticket: #{{ activity.details.id }}</span
+            >
+            <span *ngSwitchCase="'Attendance'">Daily Attendance Complete</span>
+            <span *ngSwitchCase="'Proctoring'">{{
+              activity.details.event
+            }}</span>
+            <span *ngSwitchCase="'Poll'">{{ activity.details.event }}</span>
+          </span>
+        </h6>
+        <small>{{ activity.timestamp }}</small>
+      </div>
+
+      <div [ngSwitch]="activity.type">
+        <div *ngSwitchCase="'Ticket'">
+          <p class="mb-1">
+            {{ activity.details.issue }} - {{ activity.details.student }} ({{
+              activity.details.deviceTag
+            }})
+          </p>
+          <span [class]="getStatusClass(activity.details.status)">{{
+            activity.details.status
+          }}</span>
+        </div>
+        <div *ngSwitchCase="'Attendance'">
+          <p class="mb-1">
+            <strong
+              >{{ activity.details.checkedIn.toLocaleString() }} /
+              {{ activity.details.total.toLocaleString() }}</strong
+            >
+            devices checked in (<strong
+              >{{ activity.details.percentage }}%</strong
+            >)
+          </p>
+        </div>
+        <div *ngSwitchCase="'Proctoring'">
+          <p class="mb-1">
+            To <strong>{{ activity.details.deviceCount }} devices</strong> in
+            OU: <strong>{{ activity.details.ou }}</strong>
+          </p>
+        </div>
+        <div *ngSwitchCase="'Poll'">
+          <p class="mb-1">
+            To <strong>{{ activity.details.deviceCount }} devices</strong> in
+            OU: <strong>{{ activity.details.ou }}</strong>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-footer d-flex justify-content-end gap-2">
+    <button class="btn btn-outline-secondary">View All Activity</button>
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Quick Views
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-ticket-alt fa-fw me-2"></i>View Tickets</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-laptop fa-fw me-2"></i>View Devices</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-users fa-fw me-2"></i>View Users</a
+          >
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-user-secret fa-fw me-2"></i>View Safety Reports</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-bell fa-fw me-2"></i>View Notifications</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fas fa-user-graduate fa-fw me-2"></i>View Proctor
+            Events</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

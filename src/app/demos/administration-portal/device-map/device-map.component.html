@@ -1,0 +1,26 @@
+<div *ngIf="apiLoaded | async; else loading">
+  <div class="map-container">
+    <google-map height="500px" width="100%" [center]="center" [zoom]="zoom">
+      <map-marker
+        *ngFor="let device of devices"
+        [position]="device.position"
+        [options]="markerOptions"
+        [title]="'Tag: ' + device.tag + '\nStatus: ' + device.status"
+      >
+      </map-marker>
+    </google-map>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div
+    style="
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <p>Loading Map...</p>
+  </div>
+</ng-template>
